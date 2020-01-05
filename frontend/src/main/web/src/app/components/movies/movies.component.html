@@ -1,0 +1,43 @@
+<div>
+
+  <mat-form-field class="search-field">
+    <input matInput placeholder="Search for movies..." aria-label="State" [matAutocomplete]="auto" [formControl]="searchMoviesCtrl">
+    <mat-autocomplete panelWidth="30%" #auto="matAutocomplete">
+      <mat-option *ngIf="isLoading" class="is-loading">Loading...</mat-option>
+      <ng-container *ngIf="!isLoading">
+        <mat-option *ngFor="let movie of filteredMovies" [value]="movie.Title">
+          <span><b>{{movie.Title}}</b> ({{movie.Year}})</span>
+        </mat-option>
+      </ng-container>
+    </mat-autocomplete>
+  </mat-form-field>
+
+  <div class="results">
+    <h3>Search Results:</h3>
+
+    <ng-container *ngIf="errorMsg; else elseTemplate">
+      {{errorMsg}}
+    </ng-container>
+
+    <ng-template #elseTemplate>
+
+      <div class="container-movies">
+        <div class="movie" *ngFor="let movie of filteredMovies">
+            <a (click)="openDialog(movie.imdbID)">
+              <img *ngIf="movie.Poster != 'N/A'; else naTemplate" src="{{movie.Poster}}">
+
+              <ng-template #naTemplate>
+                <img src="/assets/na.png">
+              </ng-template>
+
+              <div class="cover">
+                <h3>{{movie.Title}}</h3>
+                <p>{{movie.Year}}</p>
+                <mat-icon [ngClass]="{'wish-selected': isInLocal(movie)}" (click)="handleWishList(movie)">favorite</mat-icon>
+              </div>
+            </a>
+        </div>
+      </div>
+    </ng-template>
+  </div>
+</div>

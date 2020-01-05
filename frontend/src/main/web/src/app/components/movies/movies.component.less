@@ -1,0 +1,52 @@
+.search-field {
+  width: 20%;
+}
+
+.container-movies {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+.movie {
+  position: relative;
+  margin: 20px 20px;
+}
+
+.movie img{
+  width: 300px;
+  height: 400px;
+}
+
+.cover {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  color: rgba(255,255,255,0);
+  text-align: center;
+  transition: all 1s linear;
+}
+
+.movie a:hover .cover {
+  background-color: rgba(0,0,0,.8);
+  color: rgba(255,255,255,1);
+  transition: all .2s linear;
+  cursor: pointer;
+}
+
+.movie a:hover h3 {
+  color: lightgoldenrodyellow;
+}
+
+.movie a:hover mat-icon {
+  cursor: zoom-in;
+}
+
+.movie a:hover .wish-selected {
+  color: red;
+  cursor: zoom-out;
+}

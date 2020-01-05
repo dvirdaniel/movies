@@ -1,0 +1,40 @@
+<div class="progress-loader" *ngIf="loading; else elseTemplate">
+
+  <mat-progress-spinner [mode]="'indeterminate'">
+  </mat-progress-spinner>
+
+</div>
+
+<ng-template #elseTemplate>
+  <div class="dialog-content">
+    <div class="movie-snap">
+      <img src="{{movie.Poster}}">
+    </div>
+    <div class="movie-details">
+      <h1><a src="movie.Website">{{movie.Title}}</a>
+        <br>
+        <span>{{movie.Released}}</span>
+      </h1>
+      <h5><u>Director:</u> {{movie.Director}}</h5>
+      <h5>Rating: {{movie.imdbRating}} / 10</h5>
+
+      <h5><u>Actors:</u></h5>
+      <ul class="movie-actors">
+        <li *ngFor="let gen of split(movie, 'Actors')">{{gen}}</li>
+      </ul>
+
+      <h5><u>Geners:</u></h5>
+      <ul class="movie-geners">
+        <li *ngFor="let gen of split(movie, 'Genre')">{{gen}}</li>
+      </ul>
+
+      <h5><u>Plot:</u></h5>
+      <p class="movie-synopsis">{{movie.Plot}}</p>
+
+      <div *ngIf="movie.Website != 'N/A'">
+        <h5><u>WebSite:</u></h5>
+        <span>{{movie.Website}}</span>
+      </div>
+    </div>
+  </div>
+</ng-template>
