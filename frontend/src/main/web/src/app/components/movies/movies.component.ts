@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {MoviesService} from "../../services/movies.service";
 import {Movie} from "../../model/movie";
-import {SearchResult} from "../../model/search-result";
 import {FormControl} from "@angular/forms";
 import {switchMap} from "rxjs/internal/operators/switchMap";
 import {debounceTime, finalize} from "rxjs/operators";
